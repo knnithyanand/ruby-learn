@@ -1,6 +1,8 @@
 RubyLearn::Application.routes.draw do
-  root :to => "home#index"
+  mount Ckeditor::Engine => '/ckeditor'
 
+  root :to => "home#index"
+  match '/gridfs/user/image/:id/:filename' => 'gridfs#serve'
   devise_for :users
 
   # The priority is based upon order of creation:

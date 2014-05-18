@@ -46,12 +46,22 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">RubyLearn</a>
+          <a class="brand" href="/">RubyLearn</a>
           <div class="container nav-collapse">
             <ul class="nav">
               <li><%= link_to "Link1", "/path1"  %></li>
               <li><%= link_to "Link2", "/path2"  %></li>
               <li><%= link_to "Link3", "/path3"  %></li>
+            </ul>
+            <ul id="user_nav" class="nav pull-right">
+              <% if current_user %>
+                <li><%= image_tag current_user.image.url(:thumb), class: "img-responsive img-rounded" %></li>
+                <li><%= link_to current_user.name, edit_user_registration_path %></li>
+                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "Sign In", new_user_session_path %></li>
+                <li><%# link_to "Sign Up", new_user_registration_path %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

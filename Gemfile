@@ -5,13 +5,13 @@ gem 'rails', '3.2.18'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',		 '~> 3.2.3'
-  gem 'coffee-rails', 		 '~> 3.2.1'
-  gem 'uglifier', 		 '>= 1.0.3'
-  gem 'twitter-bootstrap-rails', '~> 2.2.8'
-  gem 'less-rails', 		 '~> 2.5.0'
+  gem 'sass-rails',		            '~> 3.2.3'
+  gem 'coffee-rails',             '~> 3.2.1'
+  gem 'uglifier', 		            '>= 1.0.3'
+  gem 'twitter-bootstrap-rails',  '~> 2.2.8'
+  gem 'less-rails', 		          '~> 2.5.0'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', 			:platforms => :ruby
+  gem 'therubyracer',                   :platforms => :ruby
 end
 
 gem 'jquery-rails'
@@ -26,8 +26,13 @@ gem 'mongoid-rspec',      '~> 1.11.0',  :group => :test
 gem 'email_spec',         '~> 1.5.0',   :group => :test
 gem 'launchy',            '~> 2.4.2',   :group => :test
 gem 'cucumber-rails',     '~> 1.4.1',   :group => :test, :require => false
-
-
+gem 'rmagick',            '~> 2.13.2'
+gem 'mongoid-grid_fs',    '~> 2.1.0'
+gem 'mongo',              '~> 1.10.1'
+gem 'ckeditor',           '~> 4.0.11'
+gem 'mini_magick',        '~> 3.7.0'
+gem 'bson_ext'
+gem 'carrierwave-mongoid',              :require => 'carrierwave/mongoid'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
