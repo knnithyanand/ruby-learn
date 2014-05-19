@@ -1,4 +1,7 @@
 RubyLearn::Application.routes.draw do
+  resources :posts
+
+
   mount Ckeditor::Engine => '/ckeditor'
 
   root :to => "home#index"

@@ -3,3 +3,9 @@
 
 en:
   hello: "Hello world"
+  views:
+    pagination:
+      previous: "<i class='fa fa-angle-left'></i>"
+      next: "<i class='fa fa-angle-right'></i>"
+      first: "<i class='fa fa-angle-double-left'></i>"
+      last: "<i class='fa fa-angle-double-right'></i>"

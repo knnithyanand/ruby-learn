@@ -1,0 +1,40 @@
+<%- model_class = Post -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        Available Posts
+        <a href="<%= new_post_path %>" class="btn btn-mini btn-default pull-right">
+              <i class="fa fa-pencil-square-o"></i> New
+        </a>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <p><%= link_to post.title, post_path(post) %></p>
+          <%= post.created %>
+          <a href="<%= post_path(post) %>" class="btn btn-mini btn-danger pull-right" data-confirm="Are you sure?" data-method="delete" rel="nofollow">
+                <i class="fa fa-trash-o fa-lg"></i>
+              </a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>
+        <div class="pull-right">
+          <%= paginate @posts %>
+        </div>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+

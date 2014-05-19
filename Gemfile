@@ -31,7 +31,10 @@ gem 'mongoid-grid_fs',    '~> 2.1.0'
 gem 'mongo',              '~> 1.10.1'
 gem 'ckeditor',           '~> 4.0.11'
 gem 'mini_magick',        '~> 3.7.0'
+gem 'simple_form'
 gem 'bson_ext'
+gem 'font-awesome-less'
+gem 'kaminari'
 gem 'carrierwave-mongoid',              :require => 'carrierwave/mongoid'
 
 # To use ActiveModel has_secure_password
