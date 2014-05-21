@@ -19,7 +19,7 @@
       <tr>
         <td>
           <p><%= link_to post.title, post_path(post) %></p>
-          <%= post.created %>
+          <%= post.updated %>
           <a href="<%= post_path(post) %>" class="btn btn-mini btn-danger pull-right" data-confirm="Are you sure?" data-method="delete" rel="nofollow">
                 <i class="fa fa-trash-o fa-lg"></i>
               </a>
