@@ -3,7 +3,40 @@
 
 en:
   hello: "Hello world"
+  
   views:
+    back:
+      text: "Back"
+      icon: "<i class='fa fa-arrow-left'></i>"
+      both: "<i class='fa fa-arrow-left'></i> Back"
+    cancel:
+      text: "Cancel"
+      icon: "<i class='fa fa-ban'></i>"
+      both: "<i class='fa fa-ban'></i> Cancel"
+    new:
+      text: "New"
+      icon: "<i class='fa fa-plus'></i> New"
+      both: "<i class='fa fa-plus'></i> New"
+    save:
+      text: "Save"
+      icon: "<i class='fa fa-floppy-o'></i>"
+      both: "<i class='fa fa-floppy-o'></i> Save"
+    edit:
+      text: "Edit"
+      icon: "<i class='fa fa-pencil'></i>"
+      both: "<i class='fa fa-pencil'></i> Edit"
+    destroy:
+      text: "Delete"
+      icon: "<i class='fa fa-trash-o fa-lg'></i>"
+      both: "<i class='fa fa-trash-o fa-lg'></i> Delete"
+    attachments:
+      text: "Attachments"
+      icon: "<i class='fa fa-paperclip'></i>"
+      both: "<i class='fa fa-paperclip'></i> Attachments"
+    
+    confirm:
+      destroy: "Are you sure you want to delete?"
+    
     pagination:
       previous: "<i class='fa fa-angle-left'></i>"
       next: "<i class='fa fa-angle-right'></i>"

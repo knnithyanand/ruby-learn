@@ -2,6 +2,8 @@
   <%= f.input :title %>
   <%= f.input :description, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Minimal'} } %>
   <%= f.button :submit %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                posts_path, :class => 'btn' %>
+  <%= link_to raw(t('views.cancel.both',
+                    :default => t("helpers.links.cancel"))),
+              posts_path,
+              :class => 'btn' %>
 <% end %>

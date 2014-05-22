@@ -8,9 +8,10 @@
     <tr>
       <th>
         Available Posts
-        <a href="<%= new_post_path %>" class="btn btn-mini btn-default pull-right">
-              <i class="fa fa-pencil-square-o"></i> New
-        </a>
+        <%= link_to raw(t('views.new.both',
+                          :default => t("helpers.links.new"))),
+                    new_post_path,
+                    :class => 'btn btn-mini btn-default pull-right' %>
       </th>
     </tr>
   </thead>
@@ -20,7 +21,7 @@
         <td>
           <p><%= link_to post.title, post_path(post) %></p>
           <%= post.updated %>
-          <a href="<%= post_path(post) %>" class="btn btn-mini btn-danger pull-right" data-confirm="Are you sure?" data-method="delete" rel="nofollow">
+          <a href="<%= post_path(post) %>" class="" data-confirm="Are you sure?" data-method="delete" rel="nofollow">
                 <i class="fa fa-trash-o fa-lg"></i>
               </a>
         </td>
