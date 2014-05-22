@@ -11,13 +11,18 @@
 </dl>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
+  <%= link_to raw(t('views.back.both',
+                    :default => t("helpers.links.back"))),
               posts_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+  <%= link_to raw(t('views.edit.both',
+                    :default => t("helpers.links.edit"))),
               edit_post_path(@post), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+  <%= link_to raw(t('views.destroy.both', 
+                    :default => t("helpers.links.destroy"))),
               post_path(@post),
               :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :data => { :confirm => t('views.confirm', 
+                                        :default => t("helpers.links.confirm",
+                                        :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
 </div>

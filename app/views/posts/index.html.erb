@@ -21,9 +21,12 @@
         <td>
           <p><%= link_to post.title, post_path(post) %></p>
           <%= post.updated %>
-          <a href="<%= post_path(post) %>" class="" data-confirm="Are you sure?" data-method="delete" rel="nofollow">
-                <i class="fa fa-trash-o fa-lg"></i>
-              </a>
+          <%= link_to raw(t('views.destroy.icon',
+                          :default => t("helpers.links.destroy"))),
+                      post_path(post), 
+                      method: :delete, 
+                      :class => 'btn btn-mini btn-danger pull-right', 
+                      data: { confirm: raw(t('views.confirm.destroy')) } %>
         </td>
       </tr>
     <% end %>
