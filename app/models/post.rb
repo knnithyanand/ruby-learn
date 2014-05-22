@@ -6,10 +6,10 @@ class Post
   field :description, type: String
   
   def created
-    'created ' + Humanize.format_date(created_at)
+    Humanize.format_date('created ', created_at)
   end
 
   def updated
-    'last updated ' + Humanize.format_date(updated_at)
+    Humanize.format_date('last updated ', updated_at)
   end
 end
