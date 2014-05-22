@@ -1,7 +1,7 @@
 require 'date'
 module Humanize
   def Humanize.format_date(prefix, date)
-    if date?
+    unless !date
       diff = Integer(Time.now - date)
       if diff <= 86400
         prefix + case diff
@@ -22,8 +22,6 @@ module Humanize
           else "#{ diff / 30 } months ago."
         end
       end
-    else
-      ''
     end
   end
 end
