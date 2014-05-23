@@ -1,0 +1,37 @@
+<%- model_class = Attachment -%>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
+      </th>
+      <th>
+        <%= link_to raw(t('views.new.both',
+                          :default => t("helpers.links.new"))),
+                    new_attachment_path,
+                    :class => 'btn btn-mini btn-default pull-right' %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @attachments.each do |attachment| %>
+      <tr>
+        <td>
+          <h2><%= link_to  raw(attachment.icon),
+                          attachment.file.url %></h2>
+        </td>
+        <td>
+          <p><%= attachment.file %></p>
+          <%= attachment.updated %>
+          <%= link_to raw(t('views.destroy.icon',
+                          :default => t("helpers.links.destroy"))),
+                      attachment_path(attachment), 
+                      method: :delete, 
+                      :class => 'btn btn-mini btn-danger pull-right', 
+                      data: { confirm: raw(t('views.confirm.destroy')) } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

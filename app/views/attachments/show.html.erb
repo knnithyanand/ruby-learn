@@ -1,0 +1,29 @@
+<%- model_class = Attachment -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:icon) %>:</strong></dt>
+  <dd><%= raw(@attachment.icon) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:file) %>:</strong></dt>
+  <dd><%= link_to raw(@attachment.icon),
+                  @attachment.file.url %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to raw(t('views.back.both',
+                    :default => t("helpers.links.back"))),
+              attachments_path, :class => 'btn'  %>
+  <%= link_to raw(t('views.edit.both',
+                    :default => t("helpers.links.edit"))),
+              edit_attachment_path(@attachment), :class => 'btn' %>
+  <%= link_to raw(t('views.destroy.both', 
+                    :default => t("helpers.links.destroy"))),
+              post_path(@attachment),
+              :method => 'delete',
+              :data => { :confirm => t('views.confirm', 
+                                        :default => t("helpers.links.confirm",
+                                        :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

@@ -1,4 +1,7 @@
 RubyLearn::Application.routes.draw do
+  resources :attachments
+
+
   resources :posts
 
 
@@ -6,6 +9,7 @@ RubyLearn::Application.routes.draw do
 
   root :to => "home#index"
   match '/gridfs/user/image/:id/:filename' => 'gridfs#serve'
+  match '/gridfs/attachment/file/:id/:filename' => 'gridfs#serve'
   devise_for :users
 
   # The priority is based upon order of creation:

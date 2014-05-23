@@ -1,6 +1,5 @@
 require 'mongo'
 class GridfsController < ApplicationController
-before_filter :authenticate_user!
   def serve
     gridfs_path = env["PATH_INFO"].gsub("/gridfs/", "")
     begin
