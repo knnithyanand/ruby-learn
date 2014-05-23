@@ -1,9 +1,7 @@
 RubyLearn::Application.routes.draw do
-  resources :attachments
-
-
-  resources :posts
-
+  resources :posts do
+    resources :attachments
+  end
 
   mount Ckeditor::Engine => '/ckeditor'
 

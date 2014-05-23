@@ -9,7 +9,7 @@
       <th>
         <%= link_to raw(t('views.new.both',
                           :default => t("helpers.links.new"))),
-                    new_attachment_path,
+                    new_post_attachment_path(params[:post_id]),
                     :class => 'btn btn-mini btn-default pull-right' %>
       </th>
     </tr>
@@ -26,7 +26,7 @@
           <%= attachment.updated %>
           <%= link_to raw(t('views.destroy.icon',
                           :default => t("helpers.links.destroy"))),
-                      attachment_path(attachment), 
+                      post_attachment_path(params[:post_id], attachment), 
                       method: :delete, 
                       :class => 'btn btn-mini btn-danger pull-right', 
                       data: { confirm: raw(t('views.confirm.destroy')) } %>

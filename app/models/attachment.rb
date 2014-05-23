@@ -4,6 +4,8 @@ class Attachment
   
   mount_uploader :file, FileUploader
 
+  belongs_to :post
+  
   def icon
     '<i class="fa fa-file-o"></i>'
   end

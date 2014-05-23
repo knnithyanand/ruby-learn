@@ -5,6 +5,8 @@ class Post
   field :title, type: String
   field :description, type: String
   
+  has_many :attachments
+  
   def created
     Humanize.format_date('created ', created_at)
   end

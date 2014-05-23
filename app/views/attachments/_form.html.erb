@@ -1,10 +1,12 @@
-<%= simple_form_for @attachment, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for @attachment,
+                    :url => post_attachments_path(params[:post_id]),
+                    :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :file %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to raw(t('views.cancel.both',
                       :default => t("helpers.links.cancel"))),
-                posts_path,
+                post_attachments_path(params[:post_id]),
                 :class => 'btn' %>
   </div>
 <% end %>

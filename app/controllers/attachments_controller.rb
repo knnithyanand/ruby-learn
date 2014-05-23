@@ -2,7 +2,8 @@ class AttachmentsController < ApplicationController
   # GET /attachments
   # GET /attachments.json
   def index
-    @attachments = Attachment.all
+    post = Post.find(params[:post_id])
+    @attachments = post.attachments
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,12 +41,15 @@ class AttachmentsController < ApplicationController
   # POST /attachments
   # POST /attachments.json
   def create
+    @post = Post.find(params[:post_id])
     @attachment = Attachment.new(params[:attachment])
+    @post.attachments << @attachment
 
     respond_to do |format|
+      @post.save
       if @attachment.save
-        format.html { redirect_to @attachment, notice: 'Attachment was successfully created.' }
-        format.json { render json: @attachment, status: :created, location: @attachment }
+        format.html { redirect_to @post, notice: 'Attachment was successfully created.' }
+        format.json { render json: @post, status: :created, location: @attachment }
       else
         format.html { render action: "new" }
         format.json { render json: @attachment.errors, status: :unprocessable_entity }
@@ -72,11 +76,12 @@ class AttachmentsController < ApplicationController
   # DELETE /attachments/1
   # DELETE /attachments/1.json
   def destroy
-    @attachment = Attachment.find(params[:id])
-    @attachment.destroy
+    @post = Post.find(params[:post_id])
+    @attachment = @post.attachments.find(params[:id])
+    @post.attachments.delete(@attachment)
 
     respond_to do |format|
-      format.html { redirect_to attachments_url }
+      format.html { redirect_to post_attachments_url }
       format.json { head :no_content }
     end
   end
