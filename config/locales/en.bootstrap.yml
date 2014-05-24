@@ -5,14 +5,14 @@ en:
   helpers:
     actions: "Actions"
     links:
-      back: "Back"
-      cancel: "Cancel"
+      back: "<i class='fa fa-arrow-left'></i> Back"
+      cancel: "<i class='fa fa-ban'></i> Cancel"
       confirm: "Are you sure?"
-      destroy: "Delete"
-      new: "New"
-      edit: "Edit"
+      destroy: "<i class='fa fa-trash-o fa-lg'></i> Delete"
+      new: "<i class='fa fa-plus'></i> New"
+      edit: "<i class='fa fa-pencil'></i> Edit"
     titles:
-      edit: "Edit %{model}"
-      save: "Save %{model}"
-      new: "New %{model}"
-      delete: "Delete %{model}"
+      edit: "<i class='fa fa-pencil'></i> Edit %{model}"
+      save: "<i class='fa fa-floppy-o'></i> Save %{model}"
+      new: "<i class='fa fa-plus'></i> New %{model}"
+      delete: "<i class='fa fa-trash-o fa-lg'></i> Delete %{model}"
