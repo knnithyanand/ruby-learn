@@ -5,12 +5,15 @@
   <%= f.input :locality %>
   <%= f.input :city %>
   <%= f.input :state %>
-  <%= f.input :country %>
+  <%= f.input :country, priority: [ "India" ], collection: [ "India", "Malaysia", "Singapore"] %>
   <%= f.input :postcode %>
   <%= f.input :phone %>
   <%= f.input :fax %>
   <%= f.input :email %>
-  <%= f.input :notes %>
+  <%= f.input :currency, as: :radio_buttons, priority: [ "INR" ], collection: [ "INR", "MYR", "SGD", "USD"] %>
+  <%= f.input :notes, label: 'About' , as: :text %>
+  <%= f.input :image, label: 'Logo' %>
+  
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to raw(t('.cancel', :default => raw(t("helpers.links.cancel")))),
