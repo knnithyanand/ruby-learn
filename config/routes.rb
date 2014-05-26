@@ -1,4 +1,10 @@
 RubyLearn::Application.routes.draw do
+  resources :courses
+
+
+  resources :schools
+
+
   resources :posts do
     resources :attachments
   end
