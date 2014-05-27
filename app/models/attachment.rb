@@ -2,7 +2,7 @@ class Attachment
   include Mongoid::Document
   include Mongoid::Timestamps
   
-  mount_uploader :file, FileUploader
+  mount_uploader :file, FileUploader, mount_on: :filename
 
   belongs_to :post
   

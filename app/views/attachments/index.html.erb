@@ -1,37 +1,19 @@
 <%- model_class = Attachment -%>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>
-        <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
-      </th>
-      <th>
-        <%= link_to raw(t('views.new.both',
-                          :default => t("helpers.links.new"))),
+<div class="list-group">
+  <div class="list-group-item">
+        <%= link_to raw(t('new',
+                    :default => t("helpers.links.new"))),
                     new_post_attachment_path(params[:post_id]),
-                    :class => 'btn btn-mini btn-default pull-right' %>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
+                    :class => 'btn btn-primary' %>
+  </div>
     <% @attachments.each do |attachment| %>
-      <tr>
-        <td>
-          <h2><%= link_to  raw(attachment.icon),
-                          attachment.file.url %></h2>
-        </td>
-        <td>
-          <p><%= attachment.file %></p>
-          <%= attachment.updated %>
-          <%= link_to raw(t('views.destroy.icon',
-                          :default => t("helpers.links.destroy"))),
-                      post_attachment_path(params[:post_id], attachment), 
-                      method: :delete, 
-                      :class => 'btn btn-mini btn-danger pull-right', 
-                      data: { confirm: raw(t('views.confirm.destroy')) } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="list-group-item">
+      <strong class="list-group-item-heading"><%= link_to attachment.filename, post_attachment_path(params[:post_id], attachment) %></strong>
+      <p class="list-group-item-text"><%= attachment.updated %> by <%= link_to "Nithyanand K N", "#" %></p>
+    </div>
+  <% end %>
+  <div class="list-group-item">
+    <%= paginate @attachments %>
+  </div>
+</div>

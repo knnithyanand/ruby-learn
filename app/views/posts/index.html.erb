@@ -3,42 +3,20 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>
-        Available Posts
-        <%= link_to raw(t('views.new.both',
-                          :default => t("helpers.links.new"))),
-                    new_post_path,
-                    :class => 'btn btn-mini btn-default pull-right' %>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td>
-          <p><%= link_to post.title, post_path(post) %></p>
-          <%= post.updated %>
-          <%= link_to raw(t('views.destroy.icon',
-                          :default => t("helpers.links.destroy"))),
-                      post_path(post), 
-                      method: :delete, 
-                      :class => 'btn btn-mini btn-danger pull-right', 
-                      data: { confirm: raw(t('views.confirm.destroy')) } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td>
-        <div class="pull-right">
-          <%= paginate @posts %>
-        </div>
-      </td>
-    </tr>
-  </tfoot>
-</table>
-
+<div class="list-group">
+  <div class="list-group-item">
+    <%= link_to raw(t('views.new.both',
+                :default => t("helpers.links.new"))),
+                new_post_path,
+                :class => 'btn btn-primary' %>
+  </div>
+  <% @posts.each do |post| %>
+    <div class="list-group-item">
+      <strong class="list-group-item-heading"><%= link_to post.title, post_path(post) %></strong>
+      <p class="list-group-item-text"><%= post.updated %> by <%= link_to "Nithyanand K N", "#" %></p>
+    </div>
+  <% end %>
+  <div class="list-group-item">
+    <%= paginate @posts %>
+  </div>
+</div>

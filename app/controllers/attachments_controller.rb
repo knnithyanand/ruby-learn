@@ -3,7 +3,7 @@ class AttachmentsController < ApplicationController
   # GET /attachments.json
   def index
     post = Post.find(params[:post_id])
-    @attachments = post.attachments
+    @attachments = post.attachments.page(params[:page]).per(15)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,8 @@ class AttachmentsController < ApplicationController
   # GET /attachments/1
   # GET /attachments/1.json
   def show
-    @attachment = Attachment.find(params[:id])
+    post = Post.find(params[:post_id])
+    attachment = Attachment.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,14 +1,27 @@
 <%- model_class = Post -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%= @post.title %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @post.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= render :inline => @post.description %></dd>
-</dl>
+<div>
+  <%= render :inline => @post.description %>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Attachments</h3>
+  </div>
+  <div class="panel-body">
+    <div class="list-group">
+      <% @post.attachments.each do |attachment| %>
+        <div class="list-group-item">
+          <strong class="list-group-item-heading"><%= link_to attachment.filename, attachment.file.url %></strong>
+          <p class="list-group-item-text"><%= attachment.updated %> by <%= link_to "Nithyanand K N", "#" %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <div class="form-actions">
   <%= link_to raw(t('views.back.both',

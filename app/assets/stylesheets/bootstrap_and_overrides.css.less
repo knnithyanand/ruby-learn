@@ -30,6 +30,7 @@ body { padding-top: 60px; }
 // Example:
 // @linkColor: #ff0000;
 
+select,
 input,
 textarea,
 .uneditable-input {
@@ -37,6 +38,14 @@ textarea,
 }
 textarea {
   height: auto;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
 }
 
 .list-group {

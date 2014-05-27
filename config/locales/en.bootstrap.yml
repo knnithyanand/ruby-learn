@@ -12,7 +12,7 @@ en:
       new: "<i class='fa fa-plus'></i> New"
       edit: "<i class='fa fa-pencil'></i> Edit"
     titles:
-      edit: "<i class='fa fa-pencil'></i> Edit %{model}"
-      save: "<i class='fa fa-floppy-o'></i> Save %{model}"
-      new: "<i class='fa fa-plus'></i> New %{model}"
-      delete: "<i class='fa fa-trash-o fa-lg'></i> Delete %{model}"
+      edit: "Edit %{model}"
+      save: "Save %{model}"
+      new: "New %{model}"
+      delete: "Delete %{model}"
