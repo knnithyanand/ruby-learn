@@ -1,4 +1,7 @@
 RubyLearn::Application.routes.draw do
+  resources :user_roles
+
+
   resources :courses
 
 

@@ -1,0 +1,10 @@
+<%= simple_form_for @user_role, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description, as: :text, input_html: { rows: 4 } %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to raw(t('.cancel', :default => raw(t("helpers.links.cancel")))),
+                user_roles_path, :class => 'btn' %>
+  </div>
+<% end %>
