@@ -6,7 +6,7 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :image, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :image, :role, :email, :password, :password_confirmation, :remember_me
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -21,6 +21,9 @@ class User
   validates_presence_of :name
   validates_uniqueness_of :name, :email, :case_sensitive => false
 
+  ## Roles
+  field :role, type: String, default: ""
+  
   ## Image
   mount_uploader :image, ImageUploader
   

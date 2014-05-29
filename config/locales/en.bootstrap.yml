@@ -4,6 +4,8 @@
 en:
   helpers:
     actions: "Actions"
+    buttons:
+      signin: "Sign In"
     links:
       back: "<i class='fa fa-arrow-left'></i> Back"
       cancel: "<i class='fa fa-ban'></i> Cancel"
