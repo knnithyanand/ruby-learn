@@ -6,7 +6,17 @@ en:
     actions: "Actions"
     buttons:
       signin: "Sign In"
+      signup: "Sign Up"
+      save: "Save"
     links:
+      signup: "<i class='fa fa-users'></i> Sign Up"
+      signin: "<i class='fa fa-sign-in'></i> Sign In"
+      signout: "<i class='fa fa-sign-out'></i> Sign Out"
+      forgot_pwd: "<i class='fa fa-exclamation-triangle'></i> Forgot your password?"
+      no_confirmation: "<i class='fa fa-info-circle'></i> Didn't receive confirmation instructions?"
+      no_unlock: "<i class='fa fa-unlock-alt'></i> Didn't receive unlock instructions?"
+      signin_facebook: "<i class='fa fa-facebook-square'></i> Sign In with Facebook"
+
       back: "<i class='fa fa-arrow-left'></i> Back"
       cancel: "<i class='fa fa-ban'></i> Cancel"
       confirm: "Are you sure?"
