@@ -1,23 +1,16 @@
 RubyLearn::Application.routes.draw do
-  resources :user_roles
+  devise_for :users
+  mount Ckeditor::Engine => '/ckeditor'
 
-
-  resources :courses
-
-
-  resources :schools
-
-
+  resources :user_roles, :courses, :schools, :users
   resources :posts do
     resources :attachments
   end
 
-  mount Ckeditor::Engine => '/ckeditor'
+  get   '/gridfs/user/image/:id/:filename' => 'gridfs#serve', as: :profile_picture
+  get   '/gridfs/attachment/:id/:filename' => 'gridfs#serve', as: :file_attachment
 
   root :to => "home#index"
-  match '/gridfs/user/image/:id/:filename' => 'gridfs#serve'
-  match '/gridfs/attachment/:id/:filename' => 'gridfs#serve'
-  devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

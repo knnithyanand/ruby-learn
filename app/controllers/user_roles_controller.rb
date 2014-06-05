@@ -80,4 +80,24 @@ class UserRolesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def users
+    @user_role = UserRole.find(params[:id])
+    @users = User.not_in_role(@user_role.id)
+    
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @user_role }
+    end
+  end
+
+  def assign
+    @user_role = UserRole.find(params[:id])
+    @users = User.find({role: @user_role.name})
+    
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @user_role }
+    end
+  end
 end

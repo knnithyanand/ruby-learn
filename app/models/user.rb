@@ -22,7 +22,9 @@ class User
   validates_uniqueness_of :name, :email, :case_sensitive => false
 
   ## Roles
-  field :role, type: String, default: ""
+  has_and_belongs_to_many :user_roles
+  scope :in_role, ->(role){ where(role: role) }
+  scope :not_in_role, ->(role){ where(role: { '$ne' => role }) }
   
   ## Image
   mount_uploader :image, ImageUploader

@@ -1,0 +1,31 @@
+<%- model_class = User -%>
+<div class="page-header">
+  <h1><%= @user.name %></h1>
+</div>
+
+<div class="list-group">
+  <% if @user.user_roles.exists? %>
+    <% @user.user_roles.each do |user_role| %>
+      <a href="<%= user_role_path(user_role) %>" class="list-group-item">
+        <strong class="list-group-item-heading"><%= user_role.name %></strong>
+        <p class="list-group-item-text truncate"><%= user_role.description %></p>
+      </a>
+    <% end %>
+  <% else %>
+    <p class="list-group-item">
+      <strong class="list-group-item-heading">No Roles Assigned</strong>
+    </p>
+  <% end %>
+</div>
+
+<div class="form-actions">
+  <%= link_to raw(t('.back', :default => raw(t("helpers.links.back")))),
+              users_path, :class => 'btn'  %>
+  <%= link_to raw(t('.edit', :default => raw(t("helpers.links.edit")))),
+              edit_user_path(@user), :class => 'btn' %>
+  <%= link_to raw(t('.destroy', :default => raw(t("helpers.links.destroy")))),
+              user_path(@user),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger pull-right' %>
+</div>
