@@ -60,7 +60,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     roles = params[:user][:user_role_ids]
     roles.delete_if { |a| a.empty? }
-      
+    
+    @user.user_roles = [ ]
     respond_to do |format|
       if @user.user_roles.push(UserRole.find(roles))
         format.html { redirect_to @user, notice: 'User role was successfully created.' }
