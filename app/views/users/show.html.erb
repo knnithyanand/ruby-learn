@@ -6,10 +6,9 @@
 <div class="list-group">
   <% if @user.user_roles.exists? %>
     <% @user.user_roles.each do |user_role| %>
-      <a href="<%= user_role_path(user_role) %>" class="list-group-item">
+      <p class="list-group-item">
         <strong class="list-group-item-heading"><%= user_role.name %></strong>
-        <p class="list-group-item-text truncate"><%= user_role.description %></p>
-      </a>
+      </p>
     <% end %>
   <% else %>
     <p class="list-group-item">
