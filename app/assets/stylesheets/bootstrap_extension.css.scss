@@ -1,0 +1,27 @@
+@import "../../../vendor/assets/stylesheets/bootstrap.scss";
+
+.controls .string { 
+  @extend .form-control;
+}
+.controls .password { 
+  @extend .form-control; 
+}
+.control-group { 
+  @extend .form-group;
+}
+.form-actions { 
+  @extend .form-group;
+}
+.contact-card { 
+  padding: 5px;
+  @media (min-width: $grid-float-breakpoint) {
+    padding: 5px;
+  }
+}
+.contact-card .item { 
+  display: inline-block;
+  vertical-align: middle;
+}
+.profile-menu {
+  width: 256px;
+}
