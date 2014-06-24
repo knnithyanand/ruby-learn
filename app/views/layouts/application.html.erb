@@ -68,21 +68,32 @@
 
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
-              <li></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle contact-card" data-toggle="dropdown"><%= current_user.name %> <b class="caret"></b></a>
-                <ul class="dropdown-menu profile-menu">
-                  <lii">
-                    <div class="media">
-                      <%= image_tag current_user.image.url(:thumb), class: "img-responsive img-rounded pull-left" %>
-                      <div class="media-body">
-                          <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-link" %><br/>
-                          <%= link_to "Sign Out", destroy_user_session_path, class: "btn btn-link", method: :delete %>
+              <% if current_user.profile %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle contact-card" data-toggle="dropdown"><%= current_user.profile.nickname %> <b class="caret"></b></a>
+                  <ul class="dropdown-menu profile-menu">
+                    <li>
+                      <div class="media">
+                        <%= image_tag current_user.profile.photo.url(:thumb), class: "img-responsive img-rounded pull-left" %>
+                        <div class="media-body">
+                          <ul class="dropdown-menu inner-menu">
+                            <li><%= link_to "Profile", profile_path(current_user.profile) %></li>
+                            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+                          </ul>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
+                    </li>
+                  </ul>
+                </li>
+              <% else %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "Create Profile", new_profile_path %></li>
+                    <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+                  </ul>
+                </li>
+              <% end %>
             <% else %>
               <li><%= link_to "Sign In", new_user_session_path %></li>
               <li><%# link_to "Sign Up", new_user_registration_path %></li>

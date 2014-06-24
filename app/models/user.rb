@@ -6,7 +6,7 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :image, :role, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -16,19 +16,11 @@ class User
   field :reset_password_token,   type: String
   field :reset_password_sent_at, type: Time
 
-  ## Name
-  field :name
-  validates_presence_of :name
-  validates_uniqueness_of :name, :email, :case_sensitive => false
+  ## Profileable
+  has_one :profile, as: :profileable
+  
+  validates_uniqueness_of :email, :case_sensitive => false
 
-  ## Roles
-  has_and_belongs_to_many :user_roles
-  scope :in_role, ->(role){ where(role: role) }
-  scope :not_in_role, ->(role){ where(role: { '$ne' => role }) }
-  
-  ## Image
-  mount_uploader :image, ImageUploader
-  
   ## Rememberable
   field :remember_created_at, type: Time
 
