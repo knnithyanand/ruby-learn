@@ -1,0 +1,20 @@
+<%- model_class = Folder -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+<div class="list-group">
+  <div class="list-group-item">
+    <%= link_to raw(t('.new', :default => raw(t("helpers.links.new")))),
+                new_folder_path,
+                :class => 'btn btn-primary' %>
+  </div>
+  <% @folders.each do |folder| %>
+    <div class="tile tile-lg">
+      <a href="<%= folder_path(folder) %>" class="thumbnail">
+        <%= image_tag folder.photo.url(:xlarge), class: "img-responsive img-rounded" %>
+        <p class="ellipsis"><%= folder.name %></p>
+      </a>
+    </div>
+  <% end %>
+</div>

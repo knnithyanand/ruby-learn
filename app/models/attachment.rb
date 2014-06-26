@@ -4,7 +4,7 @@ class Attachment
   
   mount_uploader :file, FileUploader, mount_on: :filename
 
-  belongs_to :post
+  belongs_to :attachable, polymorphic: true
   
   def icon
     '<i class="fa fa-file-o"></i>'

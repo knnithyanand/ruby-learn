@@ -5,11 +5,11 @@
 
 <div class="list-group">
   <% @users.each do |user| %>
-    <a href="<%= user_path(user) %>" class="list-group-item">
+    <a href="<%= profile_path(user.profile) %>" class="list-group-item">
       <div class="media">
-        <%= image_tag user.image.url(:thumb), class: "pull-left img-responsive img-rounded image-thumb-64 media-object" %>
+        <%= image_tag user.profile.photo.url(:thumb), class: "pull-left img-responsive img-rounded image-thumb-64 media-object" %>
         <div class="media-body">
-          <h4 class="media-heading"><%= user.name %></h4>
+          <h4 class="media-heading"><%= user.profile.full_name %></h4>
           <%= user.email %>        
         </div>
       </div>

@@ -1,14 +1,14 @@
-class Workspace
+class Folder
   include Mongoid::Document
   include Mongoid::Timestamps
 
   field :name, type: String
   field :description, type: String
   
-  has_one :workspace_membership
-
+  has_many :enrollments, as: :enrollable
+  
   ## Image
-  mount_uploader :image, ImageUploader
+  mount_uploader :photo, PhotoUploader
   
   def created
     Humanize.format_date('created ', created_at)

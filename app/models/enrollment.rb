@@ -1,8 +1,10 @@
-class WorkspaceMembership
+class Enrollment
   include Mongoid::Document
   include Mongoid::Timestamps
   
-  belongs_to :workspace
+  belongs_to :profile
+  belongs_to :enrollable, polymorphic: true
+  field :role, type: String
 
   def created
     Humanize.format_date('created ', created_at)

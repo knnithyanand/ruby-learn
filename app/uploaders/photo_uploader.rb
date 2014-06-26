@@ -3,7 +3,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   storage :grid_fs
 
   def store_dir
-    "#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "#{model.class.to_s.underscore}/#{model.id}/#{mounted_as}"
   end
 
   version :xsmall do

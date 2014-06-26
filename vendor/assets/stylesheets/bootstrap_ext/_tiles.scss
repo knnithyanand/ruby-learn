@@ -1,0 +1,77 @@
+$tile-xsm-max-height: 24px;
+$tile-sm-max-height: 48px;
+$tile-max-height: 96px;
+$tile-lg-max-height: 192px;
+$tile-xlg-max-height: 384px;
+
+$tile-xsm-max-width: 43px;
+$tile-sm-max-width: 85px;
+$tile-max-width: 171px;
+$tile-lg-max-width: 341px;
+$tile-xlg-max-width: 683px;
+
+.tile {
+  display: inline-block;
+}
+
+.tile a img, .tile img {
+  max-height: $tile-max-height;
+  max-height: $tile-max-width;
+}
+
+.tile a {
+  background-color: $table-bg-accent;
+  color: #333333;
+  border-width: 3px;
+  margin-top: 6px;
+  margin-left: 4px;
+  margin-right: 4px;
+
+  &:hover,
+  &:focus {
+    background-color: $table-bg-hover;
+    text-decoration: none;
+  }
+}
+
+.tile a p, .tile p {
+  margin: 4px;
+  text-decoration: none;
+}
+
+.tile-xsm {
+  @extend .tile;
+}
+
+.tile-xsm a img, .tile-xsm img {
+  max-height: $tile-xsm-max-height;
+  max-width: $tile-xsm-max-width;
+}
+
+.tile-sm {
+  @extend .tile;
+}
+
+.tile-sm a img, .tile-sm img {
+  max-height: $tile-sm-max-height;
+  max-width: $tile-sm-max-width;
+}
+
+.tile-lg {
+  @extend .tile;
+}
+
+.tile-lg a img, .tile-lg img {
+  max-height: $tile-lg-max-height;
+  max-width: $tile-lg-max-width;
+}
+
+.tile-xlg {
+  @extend .tile;
+}
+
+.tile-xlg a img, .tile-xlg img {
+  max-height: $tile-xlg-max-height;
+  max-width: $tile-xlg-max-width;
+}
+

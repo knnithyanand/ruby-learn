@@ -2,15 +2,16 @@ RubyLearn::Application.routes.draw do
   devise_for :users
   mount Ckeditor::Engine => '/ckeditor'
 
-  resources :user_roles, :courses, :schools, :users, :workspaces
+  resources :user_roles, :courses, :schools, :users, :folders
   resources :profiles
 
   resources :posts do
     resources :attachments
   end
 
-  get   '/gridfs/profile/photo/:id/:filename' => 'gridfs#serve', as: :profile_picture
-  get   '/gridfs/attachment/:id/:filename' => 'gridfs#serve', as: :file_attachment
+  get   '/blob/profile/:id/photo/:filename' => 'blob#serve', as: :profile_picture
+  get   '/blob/folder/:id/photo/:filename' => 'blob#serve', as: :folder_image
+  get   '/blob/attachment/:id/:filename' => 'blob#serve', as: :file_attachment
 
   root :to => "home#index"
 
