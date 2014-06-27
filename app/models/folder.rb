@@ -4,7 +4,12 @@ class Folder
 
   field :name, type: String
   field :description, type: String
-  
+
+  field :is_workspace, type: Boolean, default: false
+
+  default_scope where(is_workspace: false)
+  scope :workspace, where(is_workspace: true)
+
   has_many :enrollments, as: :enrollable
   
   ## Image
