@@ -2,15 +2,18 @@ RubyLearn::Application.routes.draw do
   devise_for :users
   mount Ckeditor::Engine => '/ckeditor'
 
-  resources :user_roles, :courses, :schools, :users, :folders
+  resources :user_roles, :courses, :schools, :users
   resources :profiles
 
   resources :posts do
     resources :attachments
   end
+  resources :folders do
+    resources :file_items
+  end
 
   get   '/blob/profile/:id/photo/:filename' => 'blob#serve', as: :profile_picture
-  get   '/blob/folder/:id/photo/:filename' => 'blob#serve', as: :folder_image
+  get   '/blob/file_item/:id/:filename' => 'blob#serve', as: :folder_image
   get   '/blob/attachment/:id/:filename' => 'blob#serve', as: :file_attachment
 
   root :to => "home#index"

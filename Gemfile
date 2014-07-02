@@ -8,28 +8,30 @@ group :assets do
   gem 'sass-rails',		            '~> 3.2.3'
   gem 'coffee-rails',             '~> 3.2.1'
   gem 'uglifier', 		            '>= 1.0.3'
+  gem 'jquery-fileupload-rails'
+  
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer',                   :platforms => :ruby
 end
 
 gem 'jquery-rails'
 
-gem 'mongoid',            '~> 3.1.6'
-gem 'devise',             '~> 3.2.4'
-gem 'factory_girl_rails', '~> 4.4.1',   :group => [:development, :test]
-gem 'rspec-rails',        '~> 3.0.1',   :group => [:development, :test]
-gem 'capybara',           '~> 2.2.1',   :group => :test
-gem 'database_cleaner',   '~> 1.2.0',   :group => :test
-gem 'mongoid-rspec',      '~> 1.11.0',  :group => :test
-gem 'email_spec',         '~> 1.5.0',   :group => :test
-gem 'launchy',            '~> 2.4.2',   :group => :test
-gem 'cucumber-rails',     '~> 1.4.1',   :group => :test, :require => false
-gem 'rmagick',            '~> 2.13.2'
-gem 'mongoid-grid_fs',    '~> 2.1.0'
-gem 'mongo',              '~> 1.10.1'
-gem 'ckeditor',           '~> 4.0.11'
-gem 'mini_magick',        '~> 3.7.0'
-gem 'cancancan',          '~> 1.8'
+gem 'mongoid',                  '~> 3.1.6'
+gem 'devise',                   '~> 3.2.4'
+gem 'factory_girl_rails',       '~> 4.4.1',   :group => [:development, :test]
+gem 'rspec-rails',              '~> 3.0.1',   :group => [:development, :test]
+gem 'capybara',                 '~> 2.2.1',   :group => :test
+gem 'database_cleaner',         '~> 1.2.0',   :group => :test
+gem 'mongoid-rspec',            '~> 1.11.0',  :group => :test
+gem 'email_spec',               '~> 1.5.0',   :group => :test
+gem 'launchy',                  '~> 2.4.2',   :group => :test
+gem 'cucumber-rails',           '~> 1.4.1',   :group => :test, :require => false
+gem 'rmagick',                  '~> 2.13.2'
+gem 'mongoid-grid_fs',          '~> 2.1.0'
+gem 'mongo',                    '~> 1.10.1'
+gem 'ckeditor',                 '~> 4.0.11'
+gem 'mini_magick',              '~> 3.7.0'
+gem 'cancancan',                '~> 1.8'
 gem 'simple_form'
 gem 'bson_ext'
 gem 'font-awesome-less'

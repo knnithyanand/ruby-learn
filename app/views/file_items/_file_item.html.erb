@@ -1,0 +1,12 @@
+<div style="width:30%; display:inline-block;">
+  <div class="media">
+    <a class="pull-left" href="<%= @file_item.file.url %>">
+      <%= image_tag(@file_item.icon_path, :class => "img-rounded img-responsive media-object") %>
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading"><%= link_to @file_item.name, @file_item.file.url %></h4>
+      <%= @file_item.updated %><br />
+      by <%= link_to "Nithyanand K N", "#" %>
+    </div>
+  </div>
+</div>

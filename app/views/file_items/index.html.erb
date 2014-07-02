@@ -1,0 +1,38 @@
+<%- model_class = FileItem -%>
+
+<%= simple_form_for @file_item,
+                    :url => folder_file_items_path(params[:folder_id]),
+                    :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :file,
+              :input_html => { :id => "file-upload-ctrl", :multiple => true, :name => "file_item[file]", "data-input" => "false" },
+              label: false %>
+
+  <script id="template-upload" type="text/x-tmpl">
+    <div class="upload">
+      {%=o.name%}
+      <div class="progress"><div class="bar" style="width: 0%"></div></div>
+    </div>
+  </script>
+    
+<% end %>
+
+<div class="row">
+  <% @file_items.each do |file_item| %>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 file-item">
+      <div class="media">
+        <a class="pull-left" href="<%= file_item.file.url %>">
+          <%= image_tag(file_item.icon_path, :class => "img-rounded img-responsive media-object") %>
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading"><%= link_to file_item.name, file_item.file.url %></h4>
+          <%= file_item.updated %><br />
+          by <%= link_to "Nithyanand K N", "#" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="pull-right">
+  <%= paginate @file_items %>
+</div>
