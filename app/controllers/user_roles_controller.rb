@@ -3,6 +3,7 @@ class UserRolesController < ApplicationController
   # GET /user_roles.json
   def index
     @user_roles = UserRole.all.page(params[:page]).per(15)
+    authorize! :read, @user_roles
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +15,7 @@ class UserRolesController < ApplicationController
   # GET /user_roles/1.json
   def show
     @user_role = UserRole.find(params[:id])
+    authorize! :read, @user_role
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +27,7 @@ class UserRolesController < ApplicationController
   # GET /user_roles/new.json
   def new
     @user_role = UserRole.new
+    authorize! :create, @user_role
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +38,14 @@ class UserRolesController < ApplicationController
   # GET /user_roles/1/edit
   def edit
     @user_role = UserRole.find(params[:id])
+    authorize! :update, @user_role
   end
 
   # POST /user_roles
   # POST /user_roles.json
   def create
     @user_role = UserRole.new(params[:user_role])
+    authorize! :create, @user_role
 
     respond_to do |format|
       if @user_role.save
@@ -57,6 +62,7 @@ class UserRolesController < ApplicationController
   # PUT /user_roles/1.json
   def update
     @user_role = UserRole.find(params[:id])
+    authorize! :update, @user_role
 
     respond_to do |format|
       if @user_role.update_attributes(params[:user_role])
@@ -73,6 +79,7 @@ class UserRolesController < ApplicationController
   # DELETE /user_roles/1.json
   def destroy
     @user_role = UserRole.find(params[:id])
+    authorize! :destroy, @user_role
     @user_role.destroy
 
     respond_to do |format|
@@ -83,6 +90,7 @@ class UserRolesController < ApplicationController
   
   def users
     @user_role = UserRole.find(params[:id])
+    authorize! :read, @user_role
     @users = User.not_in_role(@user_role.id)
     
     respond_to do |format|
@@ -93,7 +101,9 @@ class UserRolesController < ApplicationController
 
   def assign
     @user_role = UserRole.find(params[:id])
+    authorize! :update, @user_role
     @users = User.find({role: @user_role.name})
+    authorize! :update, @users
     
     respond_to do |format|
       format.html # new.html.erb

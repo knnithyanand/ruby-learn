@@ -3,7 +3,9 @@ class FileItemsController < ApplicationController
   # GET /file_items.json
   def index
     @folder = Folder.find(params[:folder_id])
+    authorize! :read, @folder
     @file_items = @folder.file_items.page(params[:page]).per(15)
+    authorize! :read, @file_items
     @file_item = FileItem.new
 
     respond_to do |format|
@@ -16,6 +18,7 @@ class FileItemsController < ApplicationController
   # GET /file_items/1.json
   def show
     @file_item = FileItem.find(params[:id])
+    authorize! :read, @file_item
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +29,10 @@ class FileItemsController < ApplicationController
   # GET /file_items/new
   # GET /file_items/new.json
   def new
+    @folder = Folder.find(params[:folder_id])
+    authorize! :update, @folder
     @file_item = FileItem.new
+    authorize! :create, @file_item
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,14 +43,17 @@ class FileItemsController < ApplicationController
   # GET /file_items/1/edit
   def edit
     @file_item = FileItem.find(params[:id])
+    authorize! :update, @file_item
   end
 
   # POST /file_items
   # POST /file_items.json
   def create
     @folder = Folder.find(params[:folder_id])
+    authorize! :update, @folder
     @file_item = FileItem.new(params[:file_item])
     @file_item.folder = @folder
+    authorize! :create, @file_item
     @file_item.save
   end
 
@@ -52,6 +61,7 @@ class FileItemsController < ApplicationController
   # PUT /file_items/1.json
   def update
     @file_item = FileItem.find(params[:id])
+    authorize! :update, @file_item
 
     respond_to do |format|
       if @file_item.update_attributes(params[:file_item])
@@ -67,7 +77,10 @@ class FileItemsController < ApplicationController
   # DELETE /file_items/1
   # DELETE /file_items/1.json
   def destroy
+    @folder = Folder.find(params[:folder_id])
+    authorize! :update, @folder
     @file_item = FileItem.find(params[:id])
+    authorize! :destroy, @file_item
     @file_item.destroy
 
     respond_to do |format|

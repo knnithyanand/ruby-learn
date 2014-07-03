@@ -3,7 +3,8 @@ class SchoolsController < ApplicationController
   # GET /schools.json
   def index
     @schools = School.all.page(params[:page]).per(15)
-
+    authorize! :read, @schools
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @schools }
@@ -14,6 +15,7 @@ class SchoolsController < ApplicationController
   # GET /schools/1.json
   def show
     @school = School.find(params[:id])
+    authorize! :read, @school
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +27,7 @@ class SchoolsController < ApplicationController
   # GET /schools/new.json
   def new
     @school = School.new
+    authorize! :create, @school
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +38,14 @@ class SchoolsController < ApplicationController
   # GET /schools/1/edit
   def edit
     @school = School.find(params[:id])
+    authorize! :update, @school
   end
 
   # POST /schools
   # POST /schools.json
   def create
     @school = School.new(params[:school])
+    authorize! :create, @school
 
     respond_to do |format|
       if @school.save
@@ -57,6 +62,7 @@ class SchoolsController < ApplicationController
   # PUT /schools/1.json
   def update
     @school = School.find(params[:id])
+    authorize! :update, @school
 
     respond_to do |format|
       if @school.update_attributes(params[:school])
@@ -73,6 +79,7 @@ class SchoolsController < ApplicationController
   # DELETE /schools/1.json
   def destroy
     @school = School.find(params[:id])
+    authorize! :destroy, @school
     @school.destroy
 
     respond_to do |format|

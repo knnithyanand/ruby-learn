@@ -3,6 +3,7 @@ class FoldersController < ApplicationController
   # GET /folders.json
   def index
     @folders = Folder.all
+    authorize! :read, @folders
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +15,7 @@ class FoldersController < ApplicationController
   # GET /folders/1.json
   def show
     @folder = Folder.find(params[:id])
+    authorize! :read, @folder
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +27,7 @@ class FoldersController < ApplicationController
   # GET /folders/new.json
   def new
     @folder = Folder.new
+    authorize! :create, @folder
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,15 +38,18 @@ class FoldersController < ApplicationController
   # GET /folders/1/edit
   def edit
     @folder = Folder.find(params[:id])
+    authorize! :update, @folder
   end
 
   # POST /folders
   # POST /folders.json
   def create
     @folder = Folder.new(params[:folder])
+    authorize! :create, @folder
+
     enrollment = Enrollment.new(role: "owner", profile: current_user.profile)
-    attachment = Attachment.new()
-    @folder.items = [ attachment ]
+    file_item = FileItem.new()
+    @folder.items = [ file_item ]
     raise @folder.to_yaml
     @folder.enrollments.push(enrollment)
     
@@ -62,6 +68,7 @@ class FoldersController < ApplicationController
   # PUT /folders/1.json
   def update
     @folder = Folder.find(params[:id])
+    authorize! :update, @folder
 
     respond_to do |format|
       if @folder.update_attributes(params[:folder])
@@ -79,6 +86,7 @@ class FoldersController < ApplicationController
   # DELETE /folders/1.json
   def destroy
     @folder = Folder.find(params[:id])
+    authorize! :destroy, @folder
     @folder.destroy
 
     respond_to do |format|

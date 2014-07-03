@@ -2,10 +2,10 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    @user = user || User.new # for guest
-    @user.user_roles.each { |role| send(role.name) }
+    @profile = user ? user.profile : Profile.new
+    @profile.user_roles.each { |role| send(role.name) }
 
-    if @user.user_roles.size == 0
+    if @profile.user_roles.size == 0
       can :read, :all #for guest without roles
     end
   end

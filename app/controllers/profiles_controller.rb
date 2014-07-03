@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
   def index
     @profiles = Profile.all
+    authorize! :read, @profiles
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +15,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @profile = Profile.find(params[:id])
+    authorize! :read, @profile
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +27,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/new.json
   def new
     @profile = Profile.new
+    authorize! :create, @profile
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +38,14 @@ class ProfilesController < ApplicationController
   # GET /profiles/1/edit
   def edit
     @profile = Profile.find(params[:id])
+    authorize! :update, @profile
   end
 
   # POST /profiles
   # POST /profiles.json
   def create
     @profile = Profile.new(params[:profile])
+    authorize! :create, @profile
     current_user.profile = @profile
 
     respond_to do |format|
@@ -58,6 +63,7 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1.json
   def update
     @profile = Profile.find(params[:id])
+    authorize! :update, @profile
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
@@ -74,6 +80,7 @@ class ProfilesController < ApplicationController
   # DELETE /profiles/1.json
   def destroy
     @profile = Profile.find(params[:id])
+    authorize! :destroy, @profile
     @profile.destroy
 
     respond_to do |format|
