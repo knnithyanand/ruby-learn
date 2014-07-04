@@ -11,8 +11,7 @@ class Ability
   end
 
   def Administrator
-    can :manage, User
-    can :manage, School
+    can :manage, :all
   end
 
   def Student

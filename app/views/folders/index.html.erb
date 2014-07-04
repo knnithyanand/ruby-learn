@@ -11,7 +11,7 @@
   </div>
   <% @folders.each do |folder| %>
     <div class="tile tile-lg">
-      <a href="<%= folder_path(folder) %>" class="thumbnail">
+      <a href="<%= folder_file_items_path(folder) %>" class="thumbnail">
         <%= image_tag folder.photo.url(:xlarge), class: "img-responsive img-rounded" %>
         <p class="ellipsis"><%= folder.name %></p>
       </a>
