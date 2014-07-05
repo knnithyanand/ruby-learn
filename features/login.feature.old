@@ -1,0 +1,10 @@
+Feature: Login User
+  In order to test login
+  As a user
+  I want to login to the app
+  
+  Scenario: User Login
+    Given I have user called Anand
+    When I go to the homepage
+    Then I should see "Ruby Learn"
+    And I should see "Login"
