@@ -9,7 +9,7 @@ RubyLearn::Application.routes.draw do
     resources :attachments
   end
   resources :folders do
-    resources :file_items, path: '/files'
+    resources :file_items
   end
 
   get   '/blob/profile/:id/photo/:filename' => 'blob#serve', as: :profile_picture

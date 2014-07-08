@@ -4,7 +4,7 @@ class FileItemsController < ApplicationController
   def index
     @folder = Folder.find(params[:folder_id])
     authorize! :read, @folder
-    @file_items = @folder.file_items.page(params[:page]).per(15)
+    @file_items = Kaminari.paginate_array(@folder.file_items).page(params[:page]).per(15)
     authorize! :read, @file_items
     @file_item = FileItem.new
 
@@ -54,18 +54,29 @@ class FileItemsController < ApplicationController
     @file_item = FileItem.new(params[:file_item])
     @file_item.folder = @folder
     authorize! :create, @file_item
-    @file_item.save
+        
+    respond_to do |format|
+      if @file_item.save
+        format.html { redirect_to @folder, notice: 'File has been successfully uploaded.' }
+        format.json { render json: @file_item, status: :created, location: @folder }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @file_item.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /file_items/1
   # PUT /file_items/1.json
   def update
+    @folder = Folder.find(params[:folder_id])
+    authorize! :update, @folder
     @file_item = FileItem.find(params[:id])
     authorize! :update, @file_item
 
     respond_to do |format|
       if @file_item.update_attributes(params[:file_item])
-        format.html { redirect_to @file_item, notice: 'File item was successfully updated.' }
+        format.html { redirect_to @folder, notice: 'File was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -84,7 +95,7 @@ class FileItemsController < ApplicationController
     @file_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to file_items_url }
+      format.html { redirect_to @folder }
       format.json { head :no_content }
     end
   end

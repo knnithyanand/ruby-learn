@@ -6,7 +6,7 @@ class FileUploader < CarrierWave::Uploader::Base
     "#{model.class.to_s.underscore}/#{model.id}"
   end
 
-  # def extension_white_list
-  #   %w(jpg jpeg gif png pdf doc docx ppt pps pptx xls xlsx)
-  # end
+  #def extension_white_list
+  #  %w(jpg jpeg gif png pdf doc pps ppt pptx xls xlsx)
+  #end
 end

@@ -49,12 +49,11 @@ class FoldersController < ApplicationController
 
     enrollment = Enrollment.new(role: "owner", profile: current_user.profile)
     file_item = FileItem.new()
-    @folder.items = [ file_item ]
-    raise @folder.to_yaml
+    @folder.file_items = [ file_item ]
     @folder.enrollments.push(enrollment)
     
     respond_to do |format|
-      if @folder.save and enrollment.save and attachment.save
+      if @folder.save and enrollment.save
         format.html { redirect_to @folder, notice: 'Folder was successfully created.' }
         format.json { render json: @folder, status: :created, location: @folder }
       else
@@ -72,7 +71,6 @@ class FoldersController < ApplicationController
 
     respond_to do |format|
       if @folder.update_attributes(params[:folder])
-        raise @folder.to_yaml
         format.html { redirect_to @folder, notice: 'Folder was successfully updated.' }
         format.json { head :no_content }
       else

@@ -2,9 +2,13 @@
 
 FactoryGirl.define do
   factory :phone_number do
-    country_code "MyString"
-    area_code "MyString"
-    number "MyString"
-    type ""
+    type { "Home" }
+    country_code { Faker::PhoneNumber.subscriber_number(2) }
+    area_code { Faker::PhoneNumber.area_code }
+    number { Faker::PhoneNumber.subscriber_number(7) }
+    
+    factory :office_phone do
+      type { "Work" }
+    end
   end
 end

@@ -4,6 +4,8 @@ class Folder
 
   field :name, type: String
   field :description, type: String
+  
+  validates_presence_of :name
 
   field :is_workspace, type: Boolean, default: false
 

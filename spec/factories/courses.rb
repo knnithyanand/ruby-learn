@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :course do
-    code "MyString"
-    name "MyString"
-    description "MyString"
-    type ""
+    code { Faker::Lorem.word }
+    name { Faker::Lorem.word }
+    description { Faker::Lorem.paragraph }
+    type "Semister"
   end
 end

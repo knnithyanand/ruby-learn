@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all.page(params[:page]).per(15)
+    @courses = Course.page(params[:page]).per(15)
     authorize! :read, @courses
 
     respond_to do |format|

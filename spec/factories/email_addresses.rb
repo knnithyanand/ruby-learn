@@ -2,7 +2,11 @@
 
 FactoryGirl.define do
   factory :email_address do
-    email "MyString"
-    type ""
+    type { "Personal" }
+    email { Faker::Internet.free_email }
+    
+    factory :work_email do
+      type { "Work" }
+    end
   end
 end

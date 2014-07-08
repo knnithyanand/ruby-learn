@@ -4,8 +4,8 @@ class PostalAddress
   field :type, type: String
   field :street, type: String
   field :area, type: String
-  field :state, type: String
   field :city, type: String
+  field :state, type: String
   field :country, type: String
   field :postcode, type: String
   

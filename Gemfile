@@ -20,7 +20,10 @@ gem 'mongoid',                  '~> 3.1.6'
 gem 'devise',                   '~> 3.2.4'
 gem 'factory_girl_rails',       '~> 4.4.1',   :group => [:development, :test]
 gem 'rspec-rails',              '~> 3.0.1',   :group => [:development, :test]
-gem 'capybara',                 '~> 2.2.1',   :group => :test
+gem 'guard-rspec',              '~> 4.2.10',  :group => [:development, :test]
+gem 'guard-zeus',               '~> 2.0.0',   :group => [:development, :test]
+gem 'faker',                    '~> 1.4.1',   :group => [:development, :test]
+gem 'capybara',                 '~> 2.2.1',   :group => :test, :require => false
 gem 'database_cleaner',         '~> 1.2.0',   :group => :test
 gem 'mongoid-rspec',            '~> 1.11.0',  :group => :test
 gem 'email_spec',               '~> 1.5.0',   :group => :test

@@ -2,7 +2,19 @@
 
 FactoryGirl.define do
   factory :user_role do
-    name "MyString"
-    description "MyString"
+    name { "User" }
+    description { Faker::Lorem.paragraph }
+    
+    factory :admin_role do
+      name { "Administrator" }
+    end
+    
+    factory :teacher_role do
+      name { "Teacher" }
+    end
+    
+    factory :student_role do
+      name { "Student" }
+    end
   end
 end
