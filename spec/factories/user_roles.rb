@@ -5,6 +5,10 @@ FactoryGirl.define do
     name { "User" }
     description { Faker::Lorem.paragraph }
     
+    factory :user_role_invalid do
+      name { "Administrator" }
+    end
+    
     factory :admin_role do
       name { "Administrator" }
     end

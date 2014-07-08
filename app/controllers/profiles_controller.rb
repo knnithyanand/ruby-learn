@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    @profiles = Profile.all
+    @profiles = Kaminari.paginate_array(Profile.all).page(params[:page]).per(15)
     authorize! :read, @profiles
 
     respond_to do |format|

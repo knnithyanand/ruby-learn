@@ -2,7 +2,7 @@ class UserRolesController < ApplicationController
   # GET /user_roles
   # GET /user_roles.json
   def index
-    @user_roles = UserRole.all.page(params[:page]).per(15)
+    @user_roles = Kaminari.paginate_array(UserRole.all).page(params[:page]).per(15)
     authorize! :read, @user_roles
 
     respond_to do |format|

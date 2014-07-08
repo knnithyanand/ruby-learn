@@ -2,7 +2,7 @@ class SchoolsController < ApplicationController
   # GET /schools
   # GET /schools.json
   def index
-    @schools = School.all.page(params[:page]).per(15)
+    @schools = Kaminari.paginate_array(School.all).page(params[:page]).per(15)
     authorize! :read, @schools
     
     respond_to do |format|
