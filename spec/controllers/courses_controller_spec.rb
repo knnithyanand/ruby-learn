@@ -19,14 +19,14 @@ RSpec.describe CoursesController, :type => :controller do
     it "assigns the requested course as @course" do
       course = create(:course)
       get :show, {:id => course.to_param}
-      assigns(:course).should eq(course)
+      expect(assigns(:course)).to eq(course)
     end
   end
 
   describe "GET new" do
     it "assigns a new course as @course" do
       get :new, {}
-      assigns(:course).should be_a_new(Course)
+      expect(assigns(:course)).to be_a_new(Course)
     end
   end
 
@@ -34,7 +34,7 @@ RSpec.describe CoursesController, :type => :controller do
     it "assigns the requested course as @course" do
       course = create(:course)
       get :edit, {:id => course.to_param}
-      assigns(:course).should eq(course)
+      expect(assigns(:course)).to eq(course)
     end
   end
 
@@ -48,13 +48,13 @@ RSpec.describe CoursesController, :type => :controller do
 
       it "assigns a newly created course as @course" do
         post :create, {:course => attributes_for(:course)}
-        assigns(:course).should be_a(Course)
-        assigns(:course).should be_persisted
+        expect(assigns(:course)).to be_a(Course)
+        expect(assigns(:course)).to be_persisted
       end
 
       it "redirects to the created course" do
         post :create, {:course => attributes_for(:course)}
-        response.should redirect_to(Course.last)
+        expect(response).to redirect_to(Course.last)
       end
     end
 
@@ -63,14 +63,14 @@ RSpec.describe CoursesController, :type => :controller do
         # Trigger the behavior that occurs when invalid params are submitted
         Course.any_instance.stub(:save).and_return(false)
         post :create, {:course => { "code" => "invalid value" }}
-        assigns(:course).should be_a_new(Course)
+        expect(assigns(:course)).to be_a_new(Course)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Course.any_instance.stub(:save).and_return(false)
         post :create, {:course => { "code" => "invalid value" }}
-        response.should render_template("new")
+        expect(response).to render_template("new")
       end
     end
   end
@@ -79,24 +79,21 @@ RSpec.describe CoursesController, :type => :controller do
     describe "with valid params" do
       it "updates the requested course" do
         course = create(:course)
-        # Assuming there are no other courses in the database, this
-        # specifies that the Course created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Course.any_instance.should_receive(:update_attributes).with({ "code" => "MyString" })
-        put :update, {:id => course.to_param, :course => { "code" => "MyString" }}
+        put :update, {:id => course.to_param, :course => attributes_for(:course, code: "UPDATED")}
+        course.reload
+        expect(course.code).to eql("UPDATED")
       end
 
       it "assigns the requested course as @course" do
         course = create(:course)
         put :update, {:id => course.to_param, :course => attributes_for(:course)}
-        assigns(:course).should eq(course)
+        expect(assigns(:course)).to eq(course)
       end
 
       it "redirects to the course" do
         course = create(:course)
         put :update, {:id => course.to_param, :course => attributes_for(:course)}
-        response.should redirect_to(course)
+        expect(response).to redirect_to(course)
       end
     end
 
@@ -106,7 +103,7 @@ RSpec.describe CoursesController, :type => :controller do
         # Trigger the behavior that occurs when invalid params are submitted
         Course.any_instance.stub(:save).and_return(false)
         put :update, {:id => course.to_param, :course => { "code" => "invalid value" }}
-        assigns(:course).should eq(course)
+        expect(assigns(:course)).to eq(course)
       end
 
       it "re-renders the 'edit' template" do
@@ -114,7 +111,7 @@ RSpec.describe CoursesController, :type => :controller do
         # Trigger the behavior that occurs when invalid params are submitted
         Course.any_instance.stub(:save).and_return(false)
         put :update, {:id => course.to_param, :course => { "code" => "invalid value" }}
-        response.should render_template("edit")
+        expect(response).to render_template("edit")
       end
     end
   end
@@ -130,7 +127,7 @@ RSpec.describe CoursesController, :type => :controller do
     it "redirects to the courses list" do
       course = create(:course)
       delete :destroy, {:id => course.to_param}
-      response.should redirect_to(courses_url)
+      expect(response).to redirect_to(courses_url)
     end
   end
 

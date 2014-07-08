@@ -11,7 +11,7 @@ RSpec.describe SchoolsController, :type => :controller do
     it "assigns all schools as @schools" do
       school = create(:school)
       get :index, {}
-      assigns(:schools).should eq([school])
+      expect(assigns(:schools)).to eq([school])
     end
   end
 
@@ -19,14 +19,14 @@ RSpec.describe SchoolsController, :type => :controller do
     it "assigns the requested school as @school" do
       school = create(:school)
       get :show, {:id => school.to_param}
-      assigns(:school).should eq(school)
+      expect(assigns(:school)).to eq(school)
     end
   end
 
   describe "GET new" do
     it "assigns a new school as @school" do
       get :new, {}
-      assigns(:school).should be_a_new(School)
+      expect(assigns(:school)).to be_a_new(School)
     end
   end
 
@@ -34,7 +34,7 @@ RSpec.describe SchoolsController, :type => :controller do
     it "assigns the requested school as @school" do
       school = create(:school)
       get :edit, {:id => school.to_param}
-      assigns(:school).should eq(school)
+      expect(assigns(:school)).to eq(school)
     end
   end
 
@@ -48,13 +48,13 @@ RSpec.describe SchoolsController, :type => :controller do
 
       it "assigns a newly created school as @school" do
         post :create, {:school => attributes_for(:school)}
-        assigns(:school).should be_a(School)
-        assigns(:school).should be_persisted
+        expect(assigns(:school)).to be_a(School)
+        expect(assigns(:school)).to be_persisted
       end
 
       it "redirects to the created school" do
         post :create, {:school => attributes_for(:school)}
-        response.should redirect_to(School.last)
+        expect(response).to redirect_to(School.last)
       end
     end
 
@@ -63,14 +63,12 @@ RSpec.describe SchoolsController, :type => :controller do
         # Trigger the behavior that occurs when invalid params are submitted
         School.any_instance.stub(:save).and_return(false)
         post :create, {:school => attributes_for(:school_invalid)}
-        assigns(:school).should be_a_new(School)
+        expect(assigns(:school)).to be_a_new(School)
       end
 
       it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        School.any_instance.stub(:save).and_return(false)
         post :create, {:school => attributes_for(:school_invalid)}
-        response.should render_template("new")
+        expect(response).to render_template("new")
       end
     end
   end
@@ -90,13 +88,13 @@ RSpec.describe SchoolsController, :type => :controller do
       it "assigns the requested school as @school" do
         school = create(:school)
         put :update, {:id => school.to_param, :school => attributes_for(:school)}
-        assigns(:school).should eq(school)
+        expect(assigns(:school)).to eq(school)
       end
 
       it "redirects to the school" do
         school = create(:school)
         put :update, {:id => school.to_param, :school => attributes_for(:school)}
-        response.should redirect_to(school)
+        expect(response).to redirect_to(school)
       end
     end
 
@@ -106,15 +104,13 @@ RSpec.describe SchoolsController, :type => :controller do
         # Trigger the behavior that occurs when invalid params are submitted
         School.any_instance.stub(:save).and_return(false)
         put :update, {:id => school.to_param, :school => attributes_for(:school_invalid)}
-        assigns(:school).should eq(school)
+        expect(assigns(:school)).to eq(school)
       end
 
       it "re-renders the 'edit' template" do
         school = create(:school)
-        # Trigger the behavior that occurs when invalid params are submitted
-        School.any_instance.stub(:save).and_return(false)
         put :update, {:id => school.to_param, :school => attributes_for(:school_invalid)}
-        response.should render_template("edit")
+        expect(response).to render_template("edit")
       end
     end
   end
@@ -130,7 +126,7 @@ RSpec.describe SchoolsController, :type => :controller do
     it "redirects to the schools list" do
       school = create(:school)
       delete :destroy, {:id => school.to_param}
-      response.should redirect_to(schools_url)
+      expect(response).to redirect_to(schools_url)
     end
   end
 

@@ -10,7 +10,7 @@ RSpec.describe UserRolesController, :type => :controller do
   describe "GET index" do
     it "assigns all user_roles as @user_roles" do
       get :index, {}
-      assigns(:user_roles).should eq(@admin.profile.user_roles)
+      expect(assigns(:user_roles)).to eq(@admin.profile.user_roles)
     end
   end
 
@@ -18,14 +18,14 @@ RSpec.describe UserRolesController, :type => :controller do
     it "assigns the requested user_role as @user_role" do
       user_role = create(:user_role)
       get :show, {:id => user_role.to_param}
-      assigns(:user_role).should eq(user_role)
+      expect(assigns(:user_role)).to eq(user_role)
     end
   end
 
   describe "GET new" do
     it "assigns a new user_role as @user_role" do
       get :new, {}
-      assigns(:user_role).should be_a_new(UserRole)
+      expect(assigns(:user_role)).to be_a_new(UserRole)
     end
   end
 
@@ -33,7 +33,7 @@ RSpec.describe UserRolesController, :type => :controller do
     it "assigns the requested user_role as @user_role" do
       user_role = create(:user_role)
       get :edit, {:id => user_role.to_param}
-      assigns(:user_role).should eq(user_role)
+      expect(assigns(:user_role)).to eq(user_role)
     end
   end
 
@@ -47,13 +47,13 @@ RSpec.describe UserRolesController, :type => :controller do
 
       it "assigns a newly created user_role as @user_role" do
         post :create, {:user_role => attributes_for(:user_role)}
-        assigns(:user_role).should be_a(UserRole)
-        assigns(:user_role).should be_persisted
+        expect(assigns(:user_role)).to be_a(UserRole)
+        expect(assigns(:user_role)).to be_persisted
       end
 
       it "redirects to the created user_role" do
         post :create, {:user_role => attributes_for(:user_role)}
-        response.should redirect_to(UserRole.last)
+        expect(response).to redirect_to(UserRole.last)
       end
     end
 
@@ -62,14 +62,14 @@ RSpec.describe UserRolesController, :type => :controller do
         # Trigger the behavior that occurs when invalid params are submitted
         UserRole.any_instance.stub(:save).and_return(false)
         post :create, {:user_role => attributes_for(:user_role_invalid)}
-        assigns(:user_role).should be_a_new(UserRole)
+        expect(assigns(:user_role)).to be_a_new(UserRole)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         UserRole.any_instance.stub(:save).and_return(false)
         post :create, {:user_role => attributes_for(:user_role_invalid)}
-        response.should render_template("new")
+        expect(response).to render_template("new")
       end
     end
   end
@@ -78,24 +78,21 @@ RSpec.describe UserRolesController, :type => :controller do
     describe "with valid params" do
       it "updates the requested user_role" do
         user_role = create(:user_role)
-        # Assuming there are no other user_roles in the database, this
-        # specifies that the UserRole created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        UserRole.any_instance.should_receive(:update_attributes).with({ "name" => "MyString" })
-        put :update, {:id => user_role.to_param, :user_role => { "name" => "MyString" }}
+        put :update, {:id => user_role.to_param, :user_role => attributes_for(:user_role, name: "UPDATED")}
+        user_role.reload
+        expect(user_role.name).to eql("UPDATED")
       end
 
       it "assigns the requested user_role as @user_role" do
         user_role = create(:user_role)
         put :update, {:id => user_role.to_param, :user_role => attributes_for(:user_role)}
-        assigns(:user_role).should eq(user_role)
+        expect(assigns(:user_role)).to eq(user_role)
       end
 
       it "redirects to the user_role" do
         user_role = create(:user_role)
         put :update, {:id => user_role.to_param, :user_role => attributes_for(:user_role)}
-        response.should redirect_to(user_role)
+        expect(response).to redirect_to(user_role)
       end
     end
 
@@ -105,7 +102,7 @@ RSpec.describe UserRolesController, :type => :controller do
         # Trigger the behavior that occurs when invalid params are submitted
         UserRole.any_instance.stub(:save).and_return(false)
         put :update, {:id => user_role.to_param, :user_role => attributes_for(:user_role_invalid)}
-        assigns(:user_role).should eq(user_role)
+        expect(assigns(:user_role)).to eq(user_role)
       end
 
       it "re-renders the 'edit' template" do
@@ -113,7 +110,7 @@ RSpec.describe UserRolesController, :type => :controller do
         # Trigger the behavior that occurs when invalid params are submitted
         UserRole.any_instance.stub(:save).and_return(false)
         put :update, {:id => user_role.to_param, :user_role => attributes_for(:user_role_invalid)}
-        response.should render_template("edit")
+        expect(response).to render_template("edit")
       end
     end
   end
@@ -129,7 +126,7 @@ RSpec.describe UserRolesController, :type => :controller do
     it "redirects to the user_roles list" do
       user_role = create(:user_role)
       delete :destroy, {:id => user_role.to_param}
-      response.should redirect_to(user_roles_url)
+      expect(response).to redirect_to(user_roles_url)
     end
   end
 

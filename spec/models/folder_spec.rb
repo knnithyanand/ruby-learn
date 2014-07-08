@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe Folder, :type => :model do
   describe "has valid factory" do
     it "for Folder" do
-      create(:folder).should be_valid
+      expect(create(:folder)).to be_valid
     end
     
     it "for Workspace" do
-      create(:workspace).should be_valid
+      expect(create(:workspace)).to be_valid
     end
   end
 
