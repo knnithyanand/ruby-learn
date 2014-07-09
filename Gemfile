@@ -37,7 +37,7 @@ gem 'mini_magick',              '~> 3.7.0'
 gem 'cancancan',                '~> 1.8'
 gem 'simple_form'
 gem 'bson_ext'
-gem 'font-awesome-less'
+gem 'font-awesome-sass'
 gem 'kaminari'
 gem 'carrierwave-mongoid',              :require => 'carrierwave/mongoid'
 
