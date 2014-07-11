@@ -6,7 +6,7 @@ RSpec.describe ProfilesController, :type => :controller do
     @admin = create(:admin)
     sign_in @admin
   end
-  
+
   describe "GET index" do
     it "assigns all profiles as @profiles" do
       get :index, {}
@@ -51,9 +51,9 @@ RSpec.describe ProfilesController, :type => :controller do
         expect(assigns(:profile)).to be_persisted
       end
 
-      it "redirects to the created profile" do
+      it "redirects to homepage after create" do
         post :create, {:profile => attributes_for(:profile)}
-        expect(response).to redirect_to(Profile.last)
+        expect(response).to redirect_to(root_path)
       end
     end
 

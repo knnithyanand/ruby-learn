@@ -17,11 +17,10 @@ RSpec.describe Profile, :type => :model do
     expect(create(:profile).phone_numbers.exists?).to eql(true)
   end
 
-
   it "has a role defined" do
-    expect(create(:profile).user_roles.exists?).to eql(true)
+    expect(create(:profile).roles)
   end
-  
+
   it "show full name" do
     expect(build(:profile).full_name).not_to be_nil
   end

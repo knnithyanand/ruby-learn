@@ -2,24 +2,29 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    @profile = user ? user.profile : Profile.new
-    @profile.user_roles.each { |role| send(role.name) }
+    @profile = (user && user.profile) ? user.profile : Profile.new
+  	@profile.roles.each { |role| send(role) }
 
-    if @profile.user_roles.size == 0
-      can :read, :all #for guest without roles
+    if @profile.roles.size == 0
+      can :manage, :all #for guest without roles
     end
   end
 
-  def Administrator
+  def guest
+    can :read, Post
+  end
+
+  def student
+    can :read, Post
+  end
+
+  def teacher
+    can :manage, Folder
+    cannot :manage, Post
+  end
+
+  def administrator
     can :manage, :all
   end
 
-  def Student
-    can :read, Post
-  end
-  
-  def Teacher
-    can :manage, Course
-    can :manage, Post
-  end
 end

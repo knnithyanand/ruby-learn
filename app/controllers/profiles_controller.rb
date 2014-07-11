@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+	skip_before_filter :require_profile, only: [:new, :create]
+
   # GET /profiles
   # GET /profiles.json
   def index
@@ -50,7 +52,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Profile was successfully created.' }
         format.json { render json: @profile, status: :created, location: @profile }
       else
         format.html { render action: "new" }

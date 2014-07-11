@@ -12,27 +12,27 @@ FactoryGirl.define do
     postal_addresses { [attributes_for(:postal_address)] }
     email_addresses { [attributes_for(:email_address)] }
     phone_numbers { [attributes_for(:phone_number)] }
-    
-    user_roles { [create(:user_role)] }
-    
+
+    roles { %i[ guest ] }
+
     factory :profile_invalid do
       first_name ""
       last_name ""
       middle_name ""
-    end    
+    end
 
     factory :admin_profile do
-      user_roles { [create(:admin_role)] }
-    end    
+      roles { %i[ administrator ] }
+    end
 
     factory :teacher_profile do
-      user_roles { [create(:teacher_role)] }
-    end    
+      roles { %i[ teacher ] }
+    end
 
     factory :student_profile do
-      user_roles { [create(:student_role)] }
-    end    
+      roles { %i[ student ] }
+    end
 
-    
+
   end
 end

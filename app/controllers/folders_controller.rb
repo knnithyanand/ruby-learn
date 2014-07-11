@@ -3,7 +3,7 @@ class FoldersController < ApplicationController
   # GET /folders.json
   def index
     @folders = Folder.all
-    authorize! :read, @folders
+    authorize! :read, Folder
 
     respond_to do |format|
       format.html # index.html.erb
@@ -51,7 +51,7 @@ class FoldersController < ApplicationController
     file_item = FileItem.new()
     @folder.file_items = [ file_item ]
     @folder.enrollments.push(enrollment)
-    
+
     respond_to do |format|
       if @folder.save and enrollment.save
         format.html { redirect_to @folder, notice: 'Folder was successfully created.' }

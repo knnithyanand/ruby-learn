@@ -2,12 +2,15 @@ RubyLearn::Application.routes.draw do
   devise_for :users
   mount Ckeditor::Engine => '/ckeditor'
 
-  resources :user_roles, :courses, :schools, :users
-  resources :profiles
+  resources :courses,
+  					:schools,
+  					:users,
+  					:profiles
 
   resources :posts do
     resources :attachments
   end
+
   resources :folders do
     resources :file_items
   end
