@@ -54,7 +54,7 @@ RSpec.describe FoldersController, :type => :controller do
 
       it "redirects to the created folder" do
         post :create, {:folder => attributes_for(:folder)}
-        expect(response).to redirect_to(Folder.last)
+        expect(response).to redirect_to(folders_path)
       end
     end
 
