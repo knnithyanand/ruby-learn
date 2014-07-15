@@ -14,6 +14,10 @@ FactoryGirl.define do
       profile { create(:profile) }
     end    
 
+    factory :user_with_profile_no_photo do
+      profile { create(:profile_no_photo) }
+    end    
+
     factory :admin do
       profile { create(:admin_profile) }
     end    

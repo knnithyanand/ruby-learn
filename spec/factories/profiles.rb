@@ -16,6 +16,10 @@ FactoryGirl.define do
 
     roles { %i[ guest ] }
 
+    factory :profile_no_photo do
+    	photo { nil }
+    end
+
     factory :profile_invalid do
       first_name ""
       last_name ""

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Devise", :type => :request do
 
-  describe "User Registration" do
+  describe "user registration" do
   	before :each do
 	    visit root_path
 		  expect(page).to have_content "Sign In"
@@ -82,7 +82,7 @@ RSpec.describe "Devise", :type => :request do
 	  end
   end
 
-  describe "User Login" do
+  describe "user" do
   	before :each do
 	    visit root_path
 		  expect(page).to have_content "Sign In"
@@ -105,6 +105,78 @@ RSpec.describe "Devise", :type => :request do
 			fill_in "Password", with: @user.password
 			click_button "Sign In"
 			expect(current_path).to eq(new_user_session_path)
+			expect(page).to have_content("Invalid email or password")
+		end
+		
+		it "requires password to login" do
+			fill_in "Email", with: @user.email
+			click_button "Sign In"
+			expect(current_path).to eq(new_user_session_path)
+			expect(page).to have_content("Invalid email or password")
+		end
+	end
+	
+  describe "login" do
+  	before :each do
+	    visit root_path
+		  expect(page).to have_content "Sign In"
+
+		  click_on "Sign In"
+		  expect(current_path).to eq(new_user_session_path)
+  	end
+
+		describe "as user with profile picture" do
+			before :each do
+			  @user = create(:user_with_profile)
+				fill_in "Email", with: @user.email
+				fill_in "Password", with: @user.password
+				click_button "Sign In"
+				expect(current_path).to eq(root_path)
+			end
+
+				it "displays profile picture" do
+					expect(page).to have_xpath("//ul[@class='dropdown-menu profile-menu']/li/div[@class='media']/img")
+				end
+
+				it "displays nickname" do
+					expect(page).to have_content(@user.profile.nickname)
+				end
+
+				it "displays Sign Out link" do
+					expect(page).to have_xpath("//a[contains(.,'Sign Out')]")
+				end
+
+				it "displays Profile link" do
+					expect(page).to have_xpath("//a[contains(.,'Profile')]")
+				end
+			
+		end
+
+		describe "as user without profile picture" do
+			before :each do
+			  @user = create(:user_with_profile_no_photo)
+				fill_in "Email", with: @user.email
+				fill_in "Password", with: @user.password
+				click_button "Sign In"
+				expect(current_path).to eq(root_path)
+			end
+
+				it "does not display profile picture" do
+					expect(page).not_to have_xpath("//ul[@class='dropdown-menu profile-menu']/li/div[@class='media']/img")
+				end
+
+				it "displays nickname" do
+					expect(page).to have_content(@user.profile.nickname)
+				end
+
+				it "displays Sign Out link" do
+					expect(page).to have_xpath("//a[contains(.,'Sign Out')]")
+				end
+
+				it "displays Profile link" do
+					expect(page).to have_xpath("//a[contains(.,'Profile')]")
+				end
+			
 		end
 	end
 end

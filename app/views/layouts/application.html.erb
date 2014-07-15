@@ -115,24 +115,31 @@
     </nav>
 
     <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-2">
-            <div class="sidebar-nav">
-              <h3>Sidebar</h3>
-              <ul class="nav nav-list">
-                <li class="nav-header">Sidebar</li>
-                <li><%= link_to "Link1", "/path1"  %></li>
-                <li><%= link_to "Link2", "/path2"  %></li>
-                <li><%= link_to "Link3", "/path3"  %></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-md-9">
-            <%= yield %>
+			<% if flash.to_a.size > 0 %>
+				<% flash.each do |name, msg| %>
+					<div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
+						<a class="close" data-dismiss="alert">×</a>
+						<%= msg %>
+					</div>
+				<% end %>
+			<% end %>
+      <div class="row">
+        <div class="col-md-2">
+          <div class="sidebar-nav">
+            <h3>Sidebar</h3>
+            <ul class="nav nav-list">
+              <li class="nav-header">Sidebar</li>
+              <li><%= link_to "Link1", "/path1"  %></li>
+              <li><%= link_to "Link2", "/path2"  %></li>
+              <li><%= link_to "Link3", "/path3"  %></li>
+            </ul>
           </div>
         </div>
 
+        <div class="col-md-9">
+          <%= yield %>
+        </div>
+      </div>
       <footer>
         <p>&copy; Company 2014</p>
       </footer>
