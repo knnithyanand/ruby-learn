@@ -78,7 +78,7 @@ RSpec.describe "Devise", :type => :request do
 		  fill_in "user_password_confirmation", with: @user.email
 		  click_on "Sign Up"
 		  expect(current_path).to eq(users_path)
-		  expect(page).to have_content("doesn't match confirmation")
+		  expect(page).to have_content("doesn't match Password")
 	  end
   end
 

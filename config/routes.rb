@@ -17,7 +17,7 @@ RubyLearn::Application.routes.draw do
 
   get   '/blob/profile/:id/photo/:filename' => 'blob#serve', as: :profile_picture
   get   '/blob/folder/:id/photo/:filename' => 'blob#serve', as: :folder_image
-  get   '/blob/file_item/:id/:filename' => 'blob#serve', as: :folder_image
+  get   '/blob/file_item/:id/:filename' => 'blob#serve', as: :folder_file
   get   '/blob/attachment/:id/:filename' => 'blob#serve', as: :file_attachment
 
   root :to => "home#index"

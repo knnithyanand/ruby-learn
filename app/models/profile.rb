@@ -3,17 +3,17 @@ class Profile
   include Mongoid::Timestamps
 
 	## Mass assignment protection
-  attr_accessible :first_name,
-  								:middle_name,
-  								:last_name,
-  								:nickname,
-  								:gender,
-  								:date_of_birth,
-  								:postal_addresses,
-  								:email_addresses,
-  								:phone_numbers,
-  								:photo,
-  								:roles
+  #### attr_accessible :first_name,
+  #								:middle_name,
+  #								:last_name,
+  #								:nickname,
+  #								:gender,
+  #								:date_of_birth,
+  #								:postal_addresses,
+  #								:email_addresses,
+  #								:phone_numbers,
+  #								:photo,
+  #								:roles
 
 	## Demographic Fields
   field :first_name, type: String

@@ -69,4 +69,6 @@ RubyLearn::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+  # Rails 4 upgrade
+  config.eager_load = true
 end

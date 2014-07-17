@@ -8,7 +8,7 @@ FactoryGirl.define do
     middle_name { Faker::Name.last_name }
     nickname { Faker::Internet.user_name(first_name) }
     gender { "Male" }
-    date_of_birth { rand(25.years).ago }
+    date_of_birth { rand(18..30).years.ago }
 
     postal_addresses { [attributes_for(:postal_address)] }
     email_addresses { [attributes_for(:email_address)] }

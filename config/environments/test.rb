@@ -32,4 +32,7 @@ RubyLearn::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # Rails 4 upgrade
+  config.eager_load = true
 end

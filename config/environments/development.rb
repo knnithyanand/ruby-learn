@@ -36,4 +36,7 @@ RubyLearn::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  # Rails 4 upgrade
+  config.eager_load = false
 end

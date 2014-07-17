@@ -9,8 +9,8 @@ class Folder
 
   field :is_workspace, type: Boolean, default: false
 
-  default_scope where(is_workspace: false)
-  scope :workspace, where(is_workspace: true)
+  default_scope -> { where(is_workspace: false) }
+  scope :workspace, -> { where(is_workspace: true) }
   
   has_many :file_items
 
