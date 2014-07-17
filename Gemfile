@@ -23,19 +23,20 @@ gem 'rspec-rails',              '~> 3.0.1',   :group => [:development, :test]
 gem 'guard-rspec',              '~> 4.2.10',  :group => [:development, :test]
 gem 'guard-zeus',               '~> 2.0.0',   :group => [:development, :test]
 gem 'faker',                    '~> 1.4.1',   :group => [:development, :test]
-gem 'capybara',                 '~> 2.2.1',   :group => :test, :require => false
-gem 'database_cleaner',         '~> 1.2.0',   :group => :test
+gem 'capybara',                 '~> 2.4.1',   :group => :test, :require => false
+gem 'database_cleaner',         '~> 1.3.0',   :group => :test
 gem 'mongoid-rspec',            '~> 1.11.0',  :group => :test
-gem 'email_spec',               '~> 1.5.0',   :group => :test
+gem 'email_spec',               '~> 1.6.0',   :group => :test
 gem 'launchy',                  '~> 2.4.2',   :group => :test
+gem 'poltergeist', 							'~> 1.5.1',   :group => :test
 gem 'cucumber-rails',           '~> 1.4.1',   :group => :test, :require => false
 gem 'rmagick',                  '~> 2.13.2'
 gem 'mongoid-grid_fs',          '~> 2.1.0'
 gem 'mongo',                    '~> 1.10.1'
-gem 'ckeditor',                 '~> 4.0.11'
+gem 'ckeditor',                 '~> 4.1.0'
 gem 'mini_magick',              '~> 3.7.0'
 gem 'cancancan',                '~> 1.8'
-gem 'simple_form'
+gem 'simple_form',              '~> 2.1.1'
 gem 'bson_ext'
 gem 'font-awesome-sass'
 gem 'kaminari'

@@ -5,7 +5,7 @@ class FileItemsController < ApplicationController
     @folder = Folder.find(params[:folder_id])
     authorize! :read, @folder
     @file_items = Kaminari.paginate_array(@folder.file_items).page(params[:page]).per(15)
-    authorize! :read, @file_items
+    authorize! :read, FileItem
     @file_item = FileItem.new
 
     respond_to do |format|
@@ -54,7 +54,7 @@ class FileItemsController < ApplicationController
     @file_item = FileItem.new(params[:file_item])
     @file_item.folder = @folder
     authorize! :create, @file_item
-        
+
     respond_to do |format|
       if @file_item.save
         format.html { redirect_to @folder, notice: 'File has been successfully uploaded.' }

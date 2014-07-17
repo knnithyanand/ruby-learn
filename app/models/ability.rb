@@ -20,6 +20,7 @@ class Ability
 
   def teacher
     can :manage, Folder
+    can :manage, FileItem
     cannot :manage, Post
   end
 

@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
     $('#new_file_item').fileupload
-        dataType: "script"
+        dataType: "json"
         add: (e, data) ->
             badge = $("#file-upload-ctrl").parent().find("div span label span").filter( ".badge" )
             $("#file-upload-ctrl").filestyle('disabled', true);
@@ -16,3 +16,7 @@ jQuery ->
                 badge.remove()
             else
                 badge.html(num)
+            fname = data.result.file.url.replace(/^.*[\\\/]/, '')
+            $("#uploaded-file-list").append("<li class='list-group-item'>" + fname + "</li>")
+            $('#upload-modal').modal()
+

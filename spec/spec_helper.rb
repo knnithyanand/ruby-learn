@@ -43,7 +43,10 @@ RSpec.configure do |config|
   
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
-  
+
+	require 'capybara/poltergeist'
+	Capybara.javascript_driver = :poltergeist  
+
   # Clean up the database
   require 'database_cleaner'
   config.before(:suite) do
